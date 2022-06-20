@@ -14,6 +14,7 @@ import { AllInclusive } from '@mui/icons-material';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import {ShoppingCart} from '@mui/icons-material';
+import {Link} from '@mui/material';
 
 const handleSubmit = (e) => {
     e.preventDefault();
@@ -168,12 +169,14 @@ const Navbar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
+              <Link key={page} href={"/about"}>
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >{page}
               </Button>
+              </Link>
             ))}
           </Box> 
           <Box sx={{mb: 0}} component="form" onSubmit={handleSubmit}>

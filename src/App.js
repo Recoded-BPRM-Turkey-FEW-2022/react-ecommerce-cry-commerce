@@ -17,7 +17,6 @@ export default function App() {
   return (
       <main className="allProducts" style={{padding:"30px"}}>
         <h2>Products</h2>
-        <hr></hr>
         <section className="productCards">
           <SingleProduct data={data} />
         </section>

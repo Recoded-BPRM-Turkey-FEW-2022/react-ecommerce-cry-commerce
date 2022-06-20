@@ -5,7 +5,6 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-
 export default function SingleProductCard({data}) {
   return (
     data.map(product => (
@@ -18,14 +17,15 @@ export default function SingleProductCard({data}) {
                 image={product.image}
                 alt={product.name}>
             </CardMedia>
-                <Typography className="title" variant="h5" component="h2">
-                    {product.price} $
-                </Typography>
             <Typography 
+            className= "productName"
             gutterBottom variant="p" 
             component="p"
             style={{textAlign:"center"}}>
                 {product.title}
+            </Typography>
+            <Typography className="price" variant="h5" component="h2">
+                    {product.price} $
             </Typography>
                 <Button 
                 variant="contained" 
