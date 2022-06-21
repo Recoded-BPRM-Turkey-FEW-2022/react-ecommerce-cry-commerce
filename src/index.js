@@ -33,8 +33,6 @@ root.render(
           <Route exact path="/" element={<App />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/product/:productId" element={<SingleProductPage />} />
-          {/* <Route exact path="product/:id" element={<SingleProductPage/>} /> */}
-          {/* I added the route above but i didnt continue to work */}
         </Routes>
       </Router>
       <ReactQueryDevtools initialIsOpen={false} />

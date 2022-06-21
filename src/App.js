@@ -20,6 +20,7 @@ export default function App() {
   // }, [])
 
   const { isLoading, data, error } = useQuery("products", getProducts);
+// getting the  getProducts function from the util file and passing it to the useQuery hook
 
   if (isLoading) {
     return <div className="ourTeam">Loading...</div>;
