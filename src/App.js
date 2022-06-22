@@ -12,7 +12,7 @@ import { useQuery } from "react-query";
 import Navbar from "./components/Navbar";
 
 
-export default function App() {
+export default function App({filter}) {
   // const [data, setData] = useState([]);
   // useEffect(() => {
   //   fetch ("https://fakestoreapi.com/products")
@@ -22,7 +22,7 @@ export default function App() {
   // }, [])
 
 //filtering products by search bar
-  const [filter, setFilter] = useState("");
+  // const [filter, setFilter] = useState("");
 
 
   const { isLoading, data, error } = useQuery("products", getProducts);
@@ -38,7 +38,7 @@ export default function App() {
 
   return (
     <>
-    <Navbar filter={filter} setFilter={setFilter}/>
+    {/* <Navbar filter={filter} setFilter={setFilter}/> */}
     <main className="allProducts" style={{ padding: "30px" }}>
 
       <h2>Products</h2>

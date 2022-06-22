@@ -26,16 +26,18 @@ const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 // Create a client
 const queryClient = new QueryClient();
-// const [filter, setFilter] = useState("");
+
+const [filter, setFilter] = useState("");
+//Type error cannot read properties of null error for useState !!!
 
 root.render(
   
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      {/* <Navbar filter={filter} setFilter={setFilter}/> */}
+      <Navbar filter={filter} setFilter={setFilter}/>
       <Router>
         <Routes>
-          <Route exact path="/" element={<App />} />
+          <Route exact path="/" element={<App filter={filter} />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/product/:productId" element={<SingleProductPage />} />
           <Route exact path="/products/category/jewelery" element={<JeweleryPage />} />
