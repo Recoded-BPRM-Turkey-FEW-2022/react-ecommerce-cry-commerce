@@ -66,7 +66,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 
-const pages = ['About Us'];
+const pages = ["electronics", "jewelery", "men's clothing", "women's clothing",'About Us'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navbar = () => {
@@ -168,7 +168,48 @@ const Navbar = () => {
             Re:Coded
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            <Link key="electronics" href={"/products/category/electronics"}>
+                <Button
+                  key="electronics"
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >ELECTRONICS
+                </Button>
+            </Link>
+            <Link key="jewelery" href={"/products/category/jewelery"}>
+                <Button
+                  key="jewelery"
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >JEWELERY
+                </Button>
+            </Link>
+            <Link key="mens" href={"/products/category/mens"}>
+                <Button
+                  key="mens"
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >MEN'S CLOTHING
+                </Button>
+            </Link>
+            <Link key="womens" href={"/products/category/womens"}>
+                <Button
+                  key="womens"
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >WOMEN'S CLOTHING
+                </Button>
+            </Link>
+            <Link key="about" href={"/about"}>
+                <Button
+                  key="about"
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >About Us
+                </Button>
+            </Link>
+            {/* const pages = ["electronics", "jewelery", "men's clothing", "women's clothing",'About Us']; */}
+            {/* {pages.map((page) => (
               <Link key={page} href={"/about"}>
               <Button
                 key={page}
@@ -177,7 +218,7 @@ const Navbar = () => {
               >{page}
               </Button>
               </Link>
-            ))}
+            ))} */}
           </Box> 
           <Box sx={{mb: 0}} component="form" onSubmit={handleSubmit}>
           <Search sx={{mr: 2}} >

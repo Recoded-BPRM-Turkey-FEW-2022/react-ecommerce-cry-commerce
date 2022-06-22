@@ -12,6 +12,10 @@ import {
 import App from "./App";
 import About from "./routes/About";
 import SingleProductPage from "./routes/SingleProductPage";
+import JeweleryPage from "./routes/JeweleryPage";
+import ElectronicsPage from "./routes/ElectronicsPage";
+import MensPage from "./routes/MensPage";
+import WomensPage from "./routes/WomensPage";
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 
@@ -33,6 +37,10 @@ root.render(
           <Route exact path="/" element={<App />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/product/:productId" element={<SingleProductPage />} />
+          <Route exact path="/products/category/jewelery" element={<JeweleryPage />} />
+          <Route exact path="/products/category/electronics" element={<ElectronicsPage />} />
+          <Route exact path="/products/category/mens" element={<MensPage />} />
+          <Route exact path="/products/category/womens" element={<WomensPage />} />
         </Routes>
       </Router>
       <ReactQueryDevtools initialIsOpen={false} />

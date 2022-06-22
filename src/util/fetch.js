@@ -19,6 +19,43 @@ export function fetchProduct(productId) {
       return data;
     });
 }
+// electronics , jewelery , men's%20clothing , women's%20clothing
+export function getJewelery() {
+  console.log("hello Category");
+  return fetch("https://fakestoreapi.com/products/category/jewelery")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      return data;
+    });
+}
+export function getElectronics() {
+  console.log("hello Category");
+  return fetch("https://fakestoreapi.com/products/category/electronics")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      return data;
+    });
+}
+export function getMens() {
+  console.log("hello Category");
+  return fetch("https://fakestoreapi.com/products/category/men's%20clothing")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      return data;
+    });
+}
+export function getWomens() {
+  console.log("hello Category");
+  return fetch("https://fakestoreapi.com/products/category/women's%20clothing")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      return data;
+    });
+}
 
 export function getProduct(productId) {
   const queryClient = useQueryClient();

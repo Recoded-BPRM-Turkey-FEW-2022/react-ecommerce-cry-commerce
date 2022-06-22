@@ -10,7 +10,6 @@ import Typography from '@mui/material/Typography';
 import Rating from '@mui/material/Rating';
 
 function SingleProductPage() {
-    const [value, setValue] = React.useState(2);
     const {productId} = useParams();
     const {isLoading, data : product, error} = getProduct(productId);
     console.log(product)
