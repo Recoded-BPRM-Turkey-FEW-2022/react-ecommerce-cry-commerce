@@ -1,4 +1,4 @@
-import React, { StrictMode } from "react";
+import React, { StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
 import Navbar from "./components/Navbar";
 import {
@@ -24,14 +24,15 @@ import { QueryClient, QueryClientProvider } from "react-query";
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
-
 // Create a client
 const queryClient = new QueryClient();
+// const [filter, setFilter] = useState("");
 
 root.render(
+  
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <Navbar />
+      {/* <Navbar filter={filter} setFilter={setFilter}/> */}
       <Router>
         <Routes>
           <Route exact path="/" element={<App />} />

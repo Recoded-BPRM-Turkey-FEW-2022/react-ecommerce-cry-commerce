@@ -16,11 +16,16 @@ import SearchIcon from '@mui/icons-material/Search';
 import {ShoppingCart} from '@mui/icons-material';
 import {Link} from '@mui/material';
 
-const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(e.target[0].value);
-    e.target[0].value = ''; // clear input
-};
+import {useState} from "react"
+
+
+
+// const handleSubmit = (e) => {
+//     e.preventDefault();
+//     console.log(e.target[0].value);
+//     e.target[0].value = ''; // clear input
+// };
+
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -69,7 +74,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const pages = ["electronics", "jewelery", "men's clothing", "women's clothing",'About Us'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-const Navbar = () => {
+const Navbar = ({filter, setFilter}) => {
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -87,6 +93,15 @@ const Navbar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+// filterin the products according to input
+// const [filter, setFilter] =useState("")
+  const handleSearchChange = (e) => {
+    setFilter(e.target.value)
+    console.log("search",filter)
+  }
+
+
 
   return (
     <AppBar className="navbar" position="fixed">
@@ -220,7 +235,8 @@ const Navbar = () => {
               </Link>
             ))} */}
           </Box> 
-          <Box sx={{mb: 0}} component="form" onSubmit={handleSubmit}>
+
+          <Box sx={{mb: 0}} component="form" >
           <Search sx={{mr: 2}} >
                 <SearchIconWrapper>
                 <SearchIcon />
@@ -228,9 +244,12 @@ const Navbar = () => {
                 <StyledInputBase
                 placeholder="Search…"
                 inputProps={{ 'aria-label': 'search' }}
+                onChange = {handleSearchChange}
                 />
             </Search>
           </Box>
+
+
           <Box sx={{ flexGrow: 0 }}>
           <ShoppingCart onClick={()=>{console.log("This page will be cart")}}></ShoppingCart>
 

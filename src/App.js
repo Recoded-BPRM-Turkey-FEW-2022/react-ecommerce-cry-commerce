@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 
 // React query import
 import { useQuery } from "react-query";
+import Navbar from "./components/Navbar";
+
 
 export default function App() {
   // const [data, setData] = useState([]);
@@ -18,6 +20,10 @@ export default function App() {
   //   .then(json => setData(json))
   //   .then(console.log(data));
   // }, [])
+
+//filtering products by search bar
+  const [filter, setFilter] = useState("");
+
 
   const { isLoading, data, error } = useQuery("products", getProducts);
 // getting the  getProducts function from the util file and passing it to the useQuery hook
@@ -31,18 +37,41 @@ export default function App() {
   }
 
   return (
+    <>
+    <Navbar filter={filter} setFilter={setFilter}/>
     <main className="allProducts" style={{ padding: "30px" }}>
+
       <h2>Products</h2>
 
       <section className="productCards">
-        {data.map((product) => {
+        {
+        filter === null ?  
+        data.map((product) => {
           return (
+            
             <Link to={`/product/${product.id}`} key={product.id}>
+            
               <SingleProduct product={product} />
             </Link>
+         
           );
-        })}
+        }  ) : 
+        
+        data.filter((products) => (
+          products.title.includes(filter)
+        )).map((product) => {
+          return (
+            
+            <Link to={`/product/${product.id}`} key={product.id}>
+            
+              <SingleProduct product={product} />
+            </Link>
+         
+          );
+        }  )
+      }
       </section>
     </main>
+    </>
   );
 }
