@@ -97,6 +97,7 @@ const Navbar = ({filter, setFilter}) => {
 // filterin the products according to input
 // const [filter, setFilter] =useState("")
   const handleSearchChange = (e) => {
+    e.preventDefault();
     setFilter(e.target.value)
     console.log("search",filter)
   }

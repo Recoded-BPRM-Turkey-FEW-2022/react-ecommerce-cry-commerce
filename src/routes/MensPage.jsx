@@ -3,11 +3,12 @@ import "../style.css";
 import SingleProduct from "../components/SingleProductCard";
 import { getMens } from "../util/fetch";
 import { Link } from "react-router-dom";
+import Filter from "../components/Filter"
 
 // React query import
 import { useQuery } from "react-query";
 
-export default function MensPage() {
+export default function MensPage({filter}) {
   const { isLoading, data, error } = useQuery("electronics", getMens);
 // getting the  getProducts function from the util file and passing it to the useQuery hook
 
@@ -23,15 +24,7 @@ export default function MensPage() {
     <main className="allProducts" style={{ padding: "30px" }}>
       <h2>Men's Clothing</h2>
 
-      <section className="productCards">
-        {data.map((product) => {
-          return (
-            <Link to={`/product/${product.id}`} key={product.id}>
-              <SingleProduct product={product} />
-            </Link>
-          );
-        })}
-      </section>
+      <Filter data={data} filter={filter}/>
     </main>
   );
 }

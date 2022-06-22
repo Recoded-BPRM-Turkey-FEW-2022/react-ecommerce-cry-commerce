@@ -1,16 +1,9 @@
 import React from "react";
-import { useEffect } from "react";
 import "./style.css";
-import { useState } from "react";
-import SingleProduct from "./components/SingleProductCard";
 import { getProducts } from "./util/fetch";
-
-import { Link } from "react-router-dom";
-
+import Filter from "./components/Filter"
 // React query import
 import { useQuery } from "react-query";
-import Navbar from "./components/Navbar";
-
 
 export default function App({filter}) {
   // const [data, setData] = useState([]);
@@ -42,35 +35,8 @@ export default function App({filter}) {
     <main className="allProducts" style={{ padding: "30px" }}>
 
       <h2>Products</h2>
-
-      <section className="productCards">
-        {
-        filter === null ?  
-        data.map((product) => {
-          return (
-            
-            <Link to={`/product/${product.id}`} key={product.id}>
-            
-              <SingleProduct product={product} />
-            </Link>
-         
-          );
-        }  ) : 
-        
-        data.filter((products) => (
-          products.title.includes(filter)
-        )).map((product) => {
-          return (
-            
-            <Link to={`/product/${product.id}`} key={product.id}>
-            
-              <SingleProduct product={product} />
-            </Link>
-         
-          );
-        }  )
-      }
-      </section>
+      <Filter data={data} filter={filter}/>
+     
     </main>
     </>
   );
