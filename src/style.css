@@ -17,8 +17,8 @@ h2{
   margin-left: 15px;
   color: gray;
 }
-.allProducts{
-  margin-top: 100px;
+.allProducts, .singleProductPage{
+  margin-top: 120px;
 }
 .navbar, .footer{
   background-color: #25b67e !important;
@@ -83,9 +83,6 @@ a{
   color: gray;
   font-size: 18px;
 }
-a:hover{
-  color: #25b67e;
-}
 .ourTeam , .stacksTitle{
   text-align: center;
   margin: 100px auto;
@@ -96,4 +93,48 @@ a:hover{
   padding: 10px 20px;
   border-radius: 20px;
 
+}
+.productTitle, .productText >h3, .productRating{
+  color:#228e6f;
+}
+.productImage{
+  max-width: 600px;
+  max-height: 70%;
+}
+.priceCart{
+  width: 100%;
+}
+.quantity{
+  width: 150px;
+  height: 40px;
+  text-align: center;
+  border-radius: 10px;
+  border:#2a936e 1px solid;
+}
+.productText{
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: flex-start;
+}
+.productText > * , .productText > Button{
+  margin: 15px;
+}
+.singleProductPage{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: auto inherit;
+  height: 90%;
+  padding: 0 100px;
+  gap: 160px;
+}
+.singleProductPage > *{
+  height: 100%;
+}
+.price{
+  margin-left: 0;
+  font-size: 30px;
+  color: #416dd3 !important;
 }
