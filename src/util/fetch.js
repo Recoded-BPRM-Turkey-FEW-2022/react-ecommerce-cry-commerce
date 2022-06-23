@@ -1,7 +1,8 @@
-import { useQuery, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
+import queryClient from "./query-client";
 
-export function getProducts() {
-  console.log("hello products");
+export function fetchProducts() {
+  // console.log("hello products");
   return fetch("https://fakestoreapi.com/products")
     .then((response) => response.json())
     .then((data) => {
@@ -10,15 +11,42 @@ export function getProducts() {
     });
 }
 
+export function getProducts() {
+  return useQuery("products", fetchProducts);
+}
+
 export function fetchProduct(productId) {
-  console.log("hello fetchProduct");
   return fetch(`https://fakestoreapi.com/products/${productId}`)
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+}
+
+export function getProduct(productId) {
+  return useQuery(["products", productId], () => fetchProduct(productId), {
+    initialData: () => {
+      return queryClient
+        .getQueryData("products")
+        ?.find((p) => (p.id = productId));
+    },
+  });
+}
+
+export function fetchCartProducts() {
+  return fetch("http://localhost:8000/cartProducts")
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
       return data;
     });
 }
+
+export function getCartProducts() {
+  return useQuery("cart-products", fetchCartProducts);
+}
+
+// Selin
 // electronics , jewelery , men's%20clothing , women's%20clothing
 export function getJewelery() {
   console.log("hello Category");
@@ -55,14 +83,4 @@ export function getWomens() {
       console.log(data);
       return data;
     });
-}
-
-export function getProduct(productId) {
-  const queryClient = useQueryClient();
-
-  return useQuery(["products", productId], () => fetchProduct(productId) , {
-    initialData: () => {
-      return queryClient.getQueryData("products")?.find((p) => p.id = productId);
-    },
-  });
 }

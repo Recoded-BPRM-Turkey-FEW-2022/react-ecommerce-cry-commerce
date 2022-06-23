@@ -1,14 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import "./style.css";
-import { useState } from "react";
+// import { useState } from "react";
 import SingleProduct from "./components/SingleProductCard";
-import { getProducts } from "./util/fetch";
-
-import { Link } from "react-router-dom";
-
-// React query import
-import { useQuery } from "react-query";
+import { getProducts, getCartProducts } from "./util/fetch";
+import queryClient from "./util/query-client";
+import { useMutation } from "react-query";
+import axios from "axios"
 
 export default function App() {
   // const [data, setData] = useState([]);
@@ -18,9 +16,23 @@ export default function App() {
   //   .then(json => setData(json))
   //   .then(console.log(data));
   // }, [])
+ 
+  const mutation = useMutation((product) => {
+    return axios.post("http://localhost:8000/cartProducts", product)
+  });
 
-  const { isLoading, data, error } = useQuery("products", getProducts);
-// getting the  getProducts function from the util file and passing it to the useQuery hook
+  // const [cart, setCart] = useState([]);
+
+  // const addToCart = (product) => {
+  //   setCart([...cart, product]);
+  // };
+
+  // useEffect(() => {
+  //   console.log(cart);
+  // }, [cart]);
+
+  const { isLoading, data, error } = getProducts();
+  // getting the  getProducts function from the util file and passing it to the useQuery hook
 
   if (isLoading) {
     return <div className="ourTeam">Loading...</div>;
@@ -34,12 +46,26 @@ export default function App() {
     <main className="allProducts" style={{ padding: "30px" }}>
       <h2>Products</h2>
 
+      {mutation.isLoading ? (
+        "Adding todo..."
+      ) : (
+        <>
+          {mutation.isError ? (
+            <div>An error occurred: {mutation.error.message}</div>
+          ) : null}
+
+          {mutation.isSuccess ? <div>Todo added!</div> : null}
+        </>
+      )}
+
       <section className="productCards">
         {data.map((product) => {
           return (
-            <Link to={`/product/${product.id}`} key={product.id}>
-              <SingleProduct product={product} />
-            </Link>
+            <SingleProduct
+              key={product.id}
+              product={product}
+              addToCart={mutation.mutate}
+            />
           );
         })}
       </section>

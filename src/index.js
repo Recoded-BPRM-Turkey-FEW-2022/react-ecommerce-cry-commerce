@@ -17,16 +17,15 @@ import ElectronicsPage from "./routes/ElectronicsPage";
 import MensPage from "./routes/MensPage";
 import WomensPage from "./routes/WomensPage";
 import { ReactQueryDevtools } from 'react-query/devtools';
-
+import Cart from './routes/Cart'
+import queryClient from './util/query-client';
 
 // React query import
-import { QueryClient, QueryClientProvider } from "react-query";
+import {  QueryClientProvider } from "react-query";
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
-// Create a client
-const queryClient = new QueryClient();
 
 root.render(
   <StrictMode>
@@ -41,6 +40,7 @@ root.render(
           <Route exact path="/products/category/electronics" element={<ElectronicsPage />} />
           <Route exact path="/products/category/mens" element={<MensPage />} />
           <Route exact path="/products/category/womens" element={<WomensPage />} />
+          <Route exact path="/checkout" element={<Cart />} />
         </Routes>
       </Router>
       <ReactQueryDevtools initialIsOpen={false} />
