@@ -239,8 +239,8 @@ const Navbar = () => {
           </Box>
           <Box sx={{ flexGrow: 0 }}>
           <Link  href={"/checkout"}>
-          <ShoppingCart onClick={()=>{console.log("This page will be cart")}}></ShoppingCart>
-         <p> No: {queryClient.getQueryData("cart-products")?.length}</p> 
+          <ShoppingCart sx={{color: "white"}}onClick={()=>{console.log("This page will be cart")}}></ShoppingCart>
+         <p id="cartBubble">{queryClient.getQueryData("cart-products")?.length}</p> 
                </Link >
             <Menu
               sx={{ mt: '45px' }}
