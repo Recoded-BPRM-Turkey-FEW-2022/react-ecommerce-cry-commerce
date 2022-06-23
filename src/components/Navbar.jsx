@@ -15,6 +15,8 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import {ShoppingCart} from '@mui/icons-material';
 import {Link} from '@mui/material';
+import queryClient from '../util/query-client';
+import {  getCartProducts } from "../util/fetch";
 
 const handleSubmit = (e) => {
     e.preventDefault();
@@ -69,7 +71,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const pages = ["electronics", "jewelery", "men's clothing", "women's clothing",'About Us'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
+
 const Navbar = () => {
+  getCartProducts();
+
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -232,8 +238,10 @@ const Navbar = () => {
             </Search>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
+          <Link  href={"/checkout"}>
           <ShoppingCart onClick={()=>{console.log("This page will be cart")}}></ShoppingCart>
-
+         <p> No: {queryClient.getQueryData("cart-products")?.length}</p> 
+               </Link >
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"

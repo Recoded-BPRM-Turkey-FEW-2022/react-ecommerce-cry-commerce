@@ -4,12 +4,16 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Link } from "react-router-dom";
 
-export default function SingleProductCard({product}) {
+
+export default function SingleProductCard({product, addToCart}) {
+  
   return (
    
     <Card className="outerCard" key={product.id}>
         <CardContent className="card">
+        <Link to={`/product/${product.id}`}>
             <CardMedia
                 className="imageBox"
                 component="img"
@@ -27,13 +31,15 @@ export default function SingleProductCard({product}) {
             <Typography className="price" variant="h5" component="h2">
                     {product.price} $
             </Typography>
-                <Button 
+            </Link>
+            <Button 
                 variant="contained" 
                 color="primary" 
-                href={product.link}>
+                onClick={()=> addToCart(product)}>
                     Add to Cart
                 </Button>
         </CardContent>
+       
     </Card>
   
   );
