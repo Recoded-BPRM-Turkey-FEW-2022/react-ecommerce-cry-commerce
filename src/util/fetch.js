@@ -1,11 +1,9 @@
 import { useQuery, useQueryClient } from "react-query";
 
 export function getProducts() {
-  console.log("hello products");
   return fetch("https://fakestoreapi.com/products")
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       return data;
     });
 }
@@ -15,7 +13,6 @@ export function fetchProduct(productId) {
   return fetch(`https://fakestoreapi.com/products/${productId}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       return data;
     });
 }
@@ -25,7 +22,6 @@ export function getJewelery() {
   return fetch("https://fakestoreapi.com/products/category/jewelery")
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       return data;
     });
 }
@@ -34,7 +30,6 @@ export function getElectronics() {
   return fetch("https://fakestoreapi.com/products/category/electronics")
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       return data;
     });
 }
@@ -43,7 +38,6 @@ export function getMens() {
   return fetch("https://fakestoreapi.com/products/category/men's%20clothing")
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       return data;
     });
 }
@@ -52,7 +46,6 @@ export function getWomens() {
   return fetch("https://fakestoreapi.com/products/category/women's%20clothing")
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       return data;
     });
 }
@@ -65,4 +58,12 @@ export function getProduct(productId) {
       return queryClient.getQueryData("products")?.find((p) => p.id = productId);
     },
   });
+}
+
+export function fetchCartProducts() {
+  return fetch("http://localhost:3001/cart")
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
 }

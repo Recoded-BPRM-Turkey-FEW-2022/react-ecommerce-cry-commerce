@@ -1,6 +1,7 @@
 import React from 'react'
 import SingleProduct from "./SingleProductCard";
 import { Link } from "react-router-dom";
+import { useMutation } from 'react-query';
 
 function Filter({filter, data}) {
   return (
@@ -12,7 +13,7 @@ function Filter({filter, data}) {
             
             <Link to={`/product/${product.id}`} key={product.id}>
             
-              <SingleProduct product={product} />
+              <SingleProduct product={product}/>
             </Link>
          
           );

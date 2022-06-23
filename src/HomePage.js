@@ -13,11 +13,13 @@ import JeweleryPage from "./routes/JeweleryPage";
 import ElectronicsPage from "./routes/ElectronicsPage";
 import MensPage from "./routes/MensPage";
 import WomensPage from "./routes/WomensPage";
+import Cart from "./components/Cart";
+import Footer from "./components/Footer";
 import { ReactQueryDevtools } from 'react-query/devtools';
 
-// React query import
+
 import { QueryClient, QueryClientProvider } from "react-query";
-// Create a client
+
 const queryClient = new QueryClient();
 
 function HomePage() {
@@ -36,8 +38,10 @@ function HomePage() {
           <Route exact path="/products/category/electronics" element={<ElectronicsPage filter={filter}/>} />
           <Route exact path="/products/category/mens" element={<MensPage filter={filter}/>} />
           <Route exact path="/products/category/womens" element={<WomensPage filter={filter} />} />
+          <Route exact path="/cart" element={<Cart />} />
         </Routes>
       </Router>
+      <Footer/>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </StrictMode>

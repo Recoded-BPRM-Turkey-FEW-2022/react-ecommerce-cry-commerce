@@ -4,8 +4,20 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { useMutation } from 'react-query';
+
 
 export default function SingleProductCard({product}) {
+    const addToCart = useMutation((cartData) => {
+        return fetch("http://localhost:3001/cart", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify(cartData),
+            });
+    }); 
   return (
    
     <Card className="outerCard" key={product.id}>
@@ -30,7 +42,16 @@ export default function SingleProductCard({product}) {
                 <Button 
                 variant="contained" 
                 color="primary" 
-                href={product.link}>
+                href={product.link}
+                onClick={()=>{addToCart.mutate(
+                    {
+                        id: product.id,
+                        title: product.title,
+                        price: product.price,
+                        image: product.image,
+
+                    }
+                )}}>
                     Add to Cart
                 </Button>
         </CardContent>

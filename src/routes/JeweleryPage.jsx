@@ -1,16 +1,13 @@
 import React from "react";
 import "../style.css";
-import SingleProduct from "../components/SingleProductCard";
 import { getJewelery } from "../util/fetch";
-import { Link } from "react-router-dom";
 import Filter from "../components/Filter"
-
-// React query import
 import { useQuery } from "react-query";
+
 
 export default function JeweleryPage({filter}) {
   const { isLoading, data, error } = useQuery("jewelery", getJewelery);
-// getting the  getProducts function from the util file and passing it to the useQuery hook
+
 
   if (isLoading) {
     return <div className="ourTeam">Loading...</div>;

@@ -1,15 +1,21 @@
 import React from 'react';
 import {useParams} from 'react-router-dom';
 import { getProduct } from "../util/fetch";
-import { useState } from 'react';
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Rating from '@mui/material/Rating';
+import {useMutation} from 'react-query';
 
 function SingleProductPage() {
+  const addToCart = useMutation((cartData) => {
+    return fetch("http://localhost:3001/cart", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cartData),
+        });
+}); 
     const {productId} = useParams();
     const {isLoading, data : product, error} = getProduct(productId);
     console.log(product)
@@ -37,7 +43,18 @@ function SingleProductPage() {
         <p>{product.description}</p>
           <h3 className="price">Price: ${product.price}</h3>
           <input type="number" placeholder="Quantity" className="quantity" min="0"></input>
-          <Button variant="contained" color="primary">
+          <Button 
+          variant="contained" 
+          color="primary"
+          onClick={()=>{addToCart.mutate(
+            {
+                id: product.id,
+                title: product.title,
+                price: product.price,
+                image: product.image,
+
+            }
+        )}}>
             Add to Cart
           </Button>
       </div>

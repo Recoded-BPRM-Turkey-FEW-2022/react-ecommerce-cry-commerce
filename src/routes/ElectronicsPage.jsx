@@ -1,15 +1,11 @@
 import React from "react";
-import SingleProduct from "../components/SingleProductCard";
 import { getElectronics } from "../util/fetch";
-import { Link } from "react-router-dom";
 import Filter from "../components/Filter"
 
-// React query import
 import { useQuery } from "react-query";
 
 export default function ElectronicsPage({filter}) {
   const { isLoading, data, error } = useQuery("electronics", getElectronics);
-// getting the  getProducts function from the util file and passing it to the useQuery hook
 
   if (isLoading) {
     return <div className="ourTeam">Loading...</div>;
@@ -22,7 +18,6 @@ export default function ElectronicsPage({filter}) {
   return (
     <main className="allProducts" style={{ padding: "30px" }}>
       <h2>Electronics</h2>
-
       <Filter data={data} filter={filter}/>
     </main>
   );

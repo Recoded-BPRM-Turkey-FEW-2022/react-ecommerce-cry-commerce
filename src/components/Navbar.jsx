@@ -15,18 +15,8 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import {ShoppingCart} from '@mui/icons-material';
 import {Link} from '@mui/material';
-
-import {useState} from "react"
-
-
-
-// const handleSubmit = (e) => {
-//     e.preventDefault();
-//     console.log(e.target[0].value);
-//     e.target[0].value = ''; // clear input
-// };
-
-
+import {  fetchCartProducts } from "../util/fetch";
+import {useQuery} from "react-query";
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -101,14 +91,14 @@ const Navbar = ({filter, setFilter}) => {
     setFilter(e.target.value)
     console.log("search",filter)
   }
-
+  const { isLoading, data} = useQuery("cart", fetchCartProducts);
 
 
   return (
     <AppBar className="navbar" position="fixed">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AllInclusive sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+      <Container maxWidth="xl" >
+        <Toolbar disableGutters sx={{width:"97%", margin:"auto"}}>
+          <AllInclusive sx={{ display: { xs: 'none', md: 'flex' }, mr: 2 }} />
           <Typography
             variant="h6"
             noWrap
@@ -252,8 +242,12 @@ const Navbar = ({filter, setFilter}) => {
 
 
           <Box sx={{ flexGrow: 0 }}>
-          <ShoppingCart onClick={()=>{console.log("This page will be cart")}}></ShoppingCart>
-
+          <Link href={"/cart"} sx={{color: "white"}}>
+          <ShoppingCart 
+          ></ShoppingCart>
+          </Link>
+          
+          <p id="cartBubble">{isLoading? ".." : data.length}</p>
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
