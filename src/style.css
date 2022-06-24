@@ -191,7 +191,7 @@ a{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #499bb7 !important;
+  background-color: #65bc9c !important;
 }
 span{
   color: rgb(255, 255, 26);
@@ -200,4 +200,17 @@ span{
   color: lightcyan;
   margin: auto;
   text-align: center;
+}
+.hero{
+  margin-top: -30px;
+  height: 400px;
+  width: 100%;
+  background-image: url("https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80");
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-bottom: 30px;
 }
