@@ -30,7 +30,8 @@ function Cart () {
             <div className='singleCartRow' key={product.id}>
               <img style={{height: "130px"}}src={product.image} alt={product.name} />
               <h4>{product.title}</h4>
-              <h2>{product.price}</h2>
+              <h4>quantity: 1</h4>
+              <h2>{product.price} $</h2>
               <button 
               className='removeFromCart'
               onClick={

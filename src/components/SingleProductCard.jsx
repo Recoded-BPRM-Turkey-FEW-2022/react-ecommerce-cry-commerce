@@ -50,17 +50,15 @@ export default function SingleProductCard({product}) {
                 variant="contained" 
                 color="primary" 
                 href={product.link}
-                onClick={()=>{addToCart.mutate(
+                id="addToCart"
+                onClick={(event)=>{event.preventDefault() ;addToCart.mutate(
                     {
                         id: product.id,
                         title: product.title,
                         price: product.price,
                         image: product.image,
-
                     }
-                )}}
-                >
-                    
+                )}}>
                     Add to Cart
                 </Button>
         </CardContent>

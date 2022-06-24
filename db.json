@@ -1,14 +1,14 @@
 {
   "cart": [
     {
-      "id": 4,
-      "title": "Gorgeous Concrete Pants",
-      "price": 641
+      "id": 2,
+      "title": "Ergonomic Concrete Ball",
+      "price": 23
     },
     {
-      "id": 1,
-      "title": "Cooler",
-      "price": 125
+      "id": 3,
+      "title": "Generic Rubber Salad",
+      "price": 711
     }
   ]
 }
