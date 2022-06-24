@@ -46,8 +46,8 @@ export function getCartProducts() {
   return useQuery("cart-products", fetchCartProducts);
 }
 
-// Selin
-// electronics , jewelery , men's%20clothing , women's%20clothing
+//Selin
+//electronics , jewelery , men's%20clothing , women's%20clothing
 export function getJewelery() {
   console.log("hello Category");
   return fetch("https://fakestoreapi.com/products/category/jewelery")
@@ -84,3 +84,4 @@ export function getWomens() {
       return data;
     });
 }
+
