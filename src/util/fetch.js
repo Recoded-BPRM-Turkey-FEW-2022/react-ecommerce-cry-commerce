@@ -10,7 +10,7 @@ export function getProducts() {
 
 export function fetchProduct(productId) {
   console.log("hello fetchProduct");
-  return fetch(`https://api.escuelajs.co/api/v1/products${productId}`)
+  return fetch(`https://api.escuelajs.co/api/v1/products/${productId}`)
     .then((response) => response.json())
     .then((data) => {
       return data;

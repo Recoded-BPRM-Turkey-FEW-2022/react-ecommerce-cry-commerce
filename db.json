@@ -1,3 +1,10 @@
 {
-  "cart": []
+  "cart": [
+    {
+      "id": 1,
+      "title": "Cooler",
+      "price": 125,
+      "image": "https://api.lorem.space/image/shoes?w=640&h=480&r=3303"
+    }
+  ]
 }

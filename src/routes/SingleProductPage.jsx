@@ -29,14 +29,14 @@ function SingleProductPage() {
   return (
     <>
     <div className="singleProductPage">
-      <img className="productImage" src={product.image}></img>
+      <img className="productImage" src={product.images[0]}></img>
       <div className="productText">
         <h1 className="productTitle">{product.title}</h1>
-        <h5>Category: {product.category.toUpperCase()}</h5>
+        <h5>Category: {product.category.name.toUpperCase()}</h5>
         <div style={{display:"flex",gap:"40px",alignItems:"center"}}>
           <h3 className="productRating">Product Rating :</h3>
-          <Rating name="read-only" value={product.rating.rate} readOnly />
-          <h5>{product.rating.rate}/{product.rating.count}</h5>
+          {/* <Rating name="read-only" value={product.rating.rate} readOnly /> */}
+          {/* <h5>{product.rating.rate}/{product.rating.count}</h5> */}
         </div>
 
         <h3>Product Details:</h3>
@@ -51,7 +51,7 @@ function SingleProductPage() {
                 id: product.id,
                 title: product.title,
                 price: product.price,
-                image: product.image,
+                image: product.images[0],
 
             }
         )}}>
