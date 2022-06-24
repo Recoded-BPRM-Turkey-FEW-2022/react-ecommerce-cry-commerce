@@ -12,7 +12,7 @@ function Cart () {
                 Accept: "application/json",
                 "Content-Type": "application/json",
                 }
-            });
+            }).then(window.location.reload());
     });
     
   return (
