@@ -3,6 +3,7 @@ import SingleProduct from "../components/SingleProductCard";
 import { getElectronics } from "../util/fetch";
 import { Link } from "react-router-dom";
 
+
 // React query import
 import { useQuery } from "react-query";
 

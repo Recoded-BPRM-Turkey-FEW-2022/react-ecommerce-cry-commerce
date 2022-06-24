@@ -1,6 +1,5 @@
-import React, { StrictMode } from "react";
+import React, { StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
-import Navbar from "./components/Navbar";
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,6 +18,10 @@ import WomensPage from "./routes/WomensPage";
 import { ReactQueryDevtools } from 'react-query/devtools';
 import Cart from './routes/Cart'
 import queryClient from './util/query-client';
+import Footer from "./components/Footer";
+import Slider from "./components/Slider";
+
+
 
 // React query import
 import {  QueryClientProvider } from "react-query";
@@ -27,10 +30,12 @@ const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
 
+
 root.render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <Navbar />
+  
+
       <Router>
         <Routes>
           <Route exact path="/" element={<App />} />
@@ -43,6 +48,7 @@ root.render(
           <Route exact path="/checkout" element={<Cart />} />
         </Routes>
       </Router>
+      <Footer/>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </StrictMode>

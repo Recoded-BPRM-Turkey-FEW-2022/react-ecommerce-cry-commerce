@@ -7,6 +7,10 @@ import { getProducts, getCartProducts } from "./util/fetch";
 import queryClient from "./util/query-client";
 import { useMutation } from "react-query";
 import axios from "axios"
+import { useQuery } from "react-query";
+import Navbar from "./components/Navbar";
+import Slider from "./components/Slider";
+
 
 export default function App() {
   // const [data, setData] = useState([]);
@@ -16,6 +20,8 @@ export default function App() {
   //   .then(json => setData(json))
   //   .then(console.log(data));
   // }, [])
+
+  const [filter, setFilter] = useState("");
  
   const mutation = useMutation((product) => {
     return axios.post("http://localhost:8000/cartProducts", product)
@@ -43,6 +49,9 @@ export default function App() {
   }
 
   return (
+    <>
+    <Navbar filter={filter} setFilter={setFilter}/>
+    <Slider />
     <main className="allProducts" style={{ padding: "30px" }}>
       <h2>Products</h2>
 
@@ -59,7 +68,22 @@ export default function App() {
       )}
 
       <section className="productCards">
-        {data.map((product) => {
+      {
+        filter === null ?  
+        data.map((product) => {
+          return (
+
+            <Link to={`/product/${product.id}`} key={product.id}>
+
+              <SingleProduct product={product} />
+            </Link>
+
+          );
+        }  ) : 
+
+        data.filter((products) => (
+          products.title.includes(filter)
+        )).map((product) => {
           return (
             <SingleProduct
               key={product.id}
@@ -70,5 +94,6 @@ export default function App() {
         })}
       </section>
     </main>
+    </>
   );
 }

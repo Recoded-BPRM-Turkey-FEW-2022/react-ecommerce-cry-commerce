@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
-
+import {useMutation} from 'react-query';
 
 export default function SingleProductCard({product, addToCart}) {
   

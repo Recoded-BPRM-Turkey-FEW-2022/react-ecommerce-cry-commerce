@@ -18,11 +18,16 @@ import {Link} from '@mui/material';
 import queryClient from '../util/query-client';
 import {  getCartProducts } from "../util/fetch";
 
-const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(e.target[0].value);
-    e.target[0].value = ''; // clear input
-};
+// const handleSubmit = (e) => {
+//     e.preventDefault();
+//     console.log(e.target[0].value);
+//     e.target[0].value = ''; // clear input
+// };
+
+import {useState} from "react"
+
+import {  fetchCartProducts } from "../util/fetch";
+import {useQuery} from "react-query";
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -72,7 +77,7 @@ const pages = ["electronics", "jewelery", "men's clothing", "women's clothing",'
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 
-const Navbar = () => {
+const Navbar = ({filter, setFilter}) => {
   getCartProducts();
 
 
@@ -94,11 +99,20 @@ const Navbar = () => {
     setAnchorElUser(null);
   };
 
+  // filterin the products according to input
+// const [filter, setFilter] =useState("")
+const handleSearchChange = (e) => {
+  setFilter(e.target.value)
+  console.log("search",filter)
+}
+
+const { isLoading, data} = useQuery("cart", fetchCartProducts);
+
   return (
     <AppBar className="navbar" position="fixed">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AllInclusive sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+      <Container maxWidth="xl" >
+        <Toolbar disableGutters sx={{width:"97%", margin:"auto"}}>
+          <AllInclusive sx={{ display: { xs: 'none', md: 'flex' }, mr: 2 }} />
           <Typography
             variant="h6"
             noWrap
@@ -226,7 +240,7 @@ const Navbar = () => {
               </Link>
             ))} */}
           </Box> 
-          <Box sx={{mb: 0}} component="form" onSubmit={handleSubmit}>
+          <Box sx={{mb: 0}} component="form">
           <Search sx={{mr: 2}} >
                 <SearchIconWrapper>
                 <SearchIcon />
@@ -234,14 +248,19 @@ const Navbar = () => {
                 <StyledInputBase
                 placeholder="Search…"
                 inputProps={{ 'aria-label': 'search' }}
+                onChange = {handleSearchChange}
                 />
             </Search>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-          <Link  href={"/checkout"} >
-          <ShoppingCart sx={{color: "white"}}onClick={()=>{console.log("This page will be cart")}}></ShoppingCart>
-         <p id="cartBubble">{queryClient.getQueryData("cart-products")?.length}</p> 
-               </Link >
+          <Link href={"/cart"} sx={{color: "white"}}>
+          <ShoppingCart 
+          ></ShoppingCart>
+          </Link>
+
+          <p id="cartBubble">{isLoading? ".." : data.length}</p>
+         {/* <p id="cartBubble">{queryClient.getQueryData("cart-products")?.length}</p>  */}
+          
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"

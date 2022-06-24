@@ -6,7 +6,7 @@ export function fetchProducts() {
   return fetch("https://fakestoreapi.com/products")
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       return data;
     });
 }
@@ -37,7 +37,7 @@ export function fetchCartProducts() {
   return fetch("http://localhost:8000/cartProducts")
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       return data;
     });
 }
@@ -53,7 +53,7 @@ export function getJewelery() {
   return fetch("https://fakestoreapi.com/products/category/jewelery")
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       return data;
     });
 }
@@ -62,7 +62,7 @@ export function getElectronics() {
   return fetch("https://fakestoreapi.com/products/category/electronics")
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       return data;
     });
 }
@@ -71,7 +71,7 @@ export function getMens() {
   return fetch("https://fakestoreapi.com/products/category/men's%20clothing")
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       return data;
     });
 }
@@ -80,7 +80,7 @@ export function getWomens() {
   return fetch("https://fakestoreapi.com/products/category/women's%20clothing")
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       return data;
     });
 }
