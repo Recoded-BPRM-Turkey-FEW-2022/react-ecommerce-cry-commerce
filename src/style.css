@@ -214,3 +214,24 @@ span{
   align-items: flex-end;
   margin-bottom: 30px;
 }
+#popup{
+  background-color: rgb(255, 255, 255);
+  height: 100px;
+  width: 300px;
+  position: absolute;
+  right: 0px;
+  top: 70px;
+  border-radius: 10px;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  flex-direction: column;
+  color: rgb(50, 129, 93);
+  padding: 20px;
+  box-shadow: 0px 0px 50px 10px #8bcafd;
+  transition: 400ms fadein ease-in-out;
+  display: none;
+}
+#popup > *{
+  display: relative;
+  width: 100%;
+}

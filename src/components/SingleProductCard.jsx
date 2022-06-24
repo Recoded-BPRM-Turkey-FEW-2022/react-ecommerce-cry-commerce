@@ -16,6 +16,13 @@ export default function SingleProductCard({product}) {
             "Content-Type": "application/json",
             },
             body: JSON.stringify(cartData),
+            }).then(()=>{
+                document.getElementById("popup").style.display="flex"
+                document.getElementById("popup").style.animation="popup 2s fade-in"
+                setTimeout(()=>{
+                    document.getElementById("popup").style.display="none"
+                    }
+                    ,2000)
             });
     }); 
   return (
@@ -51,7 +58,9 @@ export default function SingleProductCard({product}) {
                         image: product.image,
 
                     }
-                )}}>
+                )}}
+                >
+                    
                     Add to Cart
                 </Button>
         </CardContent>

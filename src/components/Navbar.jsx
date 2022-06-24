@@ -246,7 +246,16 @@ const Navbar = ({filter, setFilter}) => {
           <ShoppingCart 
           ></ShoppingCart>
           </Link>
-          
+          <div id="popup">
+            <p>{
+            isLoading? null
+            : data.length ==0? null
+            :(`1x ${data[data.length-1].title} for ${data[data.length-1].price}$ was`)
+            }
+            </p>
+            <hr></hr>
+            <h3>Added to Cart</h3>
+          </div>
           <p id="cartBubble">{isLoading? ".." : data.length}</p>
             <Menu
               sx={{ mt: '45px' }}
