@@ -26,7 +26,7 @@ export default function SingleProductCard({product}) {
                 className="imageBox"
                 component="img"
                 height="140"
-                image={product.image}
+                image={product.images[0]}
                 alt={product.name}>
             </CardMedia>
             <Typography 

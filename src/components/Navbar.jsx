@@ -61,7 +61,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 
-const pages = ["electronics", "jewelery", "men's clothing", "women's clothing",'About Us'];
+const pages = ["electronics", "clothes", "men's clothing", "women's clothing",'About Us'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navbar = ({filter, setFilter}) => {
@@ -182,28 +182,28 @@ const Navbar = ({filter, setFilter}) => {
                 >ELECTRONICS
                 </Button>
             </Link>
-            <Link key="jewelery" href={"/products/category/jewelery"}>
+            <Link key="clothes" href={"/products/category/clothes"}>
                 <Button
-                  key="jewelery"
+                  key="clothes"
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'white', display: 'block' }}
-                >JEWELERY
+                >CLOTHES
                 </Button>
             </Link>
-            <Link key="mens" href={"/products/category/mens"}>
+            <Link key="furniture" href={"/products/category/furniture"}>
                 <Button
-                  key="mens"
+                  key="furniture"
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'white', display: 'block' }}
-                >MEN'S CLOTHING
+                >FURNITURE
                 </Button>
             </Link>
-            <Link key="womens" href={"/products/category/womens"}>
+            <Link key="shoes" href={"/products/category/shoes"}>
                 <Button
-                  key="womens"
+                  key="shoes"
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'white', display: 'block' }}
-                >WOMEN'S CLOTHING
+                >SHOES
                 </Button>
             </Link>
             <Link key="about" href={"/about"}>
@@ -214,7 +214,7 @@ const Navbar = ({filter, setFilter}) => {
                 >About Us
                 </Button>
             </Link>
-            {/* const pages = ["electronics", "jewelery", "men's clothing", "women's clothing",'About Us']; */}
+            {/* const pages = ["electronics", "clothes", "men's clothing", "women's clothing",'About Us']; */}
             {/* {pages.map((page) => (
               <Link key={page} href={"/about"}>
               <Button

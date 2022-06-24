@@ -1,7 +1,7 @@
 import { useQuery, useQueryClient } from "react-query";
 
 export function getProducts() {
-  return fetch("https://fakestoreapi.com/products")
+  return fetch("https://api.escuelajs.co/api/v1/products")
     .then((response) => response.json())
     .then((data) => {
       return data;
@@ -10,16 +10,16 @@ export function getProducts() {
 
 export function fetchProduct(productId) {
   console.log("hello fetchProduct");
-  return fetch(`https://fakestoreapi.com/products/${productId}`)
+  return fetch(`https://api.escuelajs.co/api/v1/products${productId}`)
     .then((response) => response.json())
     .then((data) => {
       return data;
     });
 }
 // electronics , jewelery , men's%20clothing , women's%20clothing
-export function getJewelery() {
+export function getClothes() {
   console.log("hello Category");
-  return fetch("https://fakestoreapi.com/products/category/jewelery")
+  return fetch("https://api.escuelajs.co/api/v1/categories/1/products")
     .then((response) => response.json())
     .then((data) => {
       return data;
@@ -27,23 +27,23 @@ export function getJewelery() {
 }
 export function getElectronics() {
   console.log("hello Category");
-  return fetch("https://fakestoreapi.com/products/category/electronics")
+  return fetch("https://api.escuelajs.co/api/v1/categories/2/products")
     .then((response) => response.json())
     .then((data) => {
       return data;
     });
 }
-export function getMens() {
+export function getShoes() {
   console.log("hello Category");
-  return fetch("https://fakestoreapi.com/products/category/men's%20clothing")
+  return fetch("https://api.escuelajs.co/api/v1/categories/4/products")
     .then((response) => response.json())
     .then((data) => {
       return data;
     });
 }
-export function getWomens() {
+export function getFurniture() {
   console.log("hello Category");
-  return fetch("https://fakestoreapi.com/products/category/women's%20clothing")
+  return fetch("https://api.escuelajs.co/api/v1/categories/3/products")
     .then((response) => response.json())
     .then((data) => {
       return data;

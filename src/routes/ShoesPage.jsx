@@ -1,11 +1,16 @@
 import React from "react";
 import "../style.css";
-import { getMens } from "../util/fetch";
+import SingleProduct from "../components/SingleProductCard";
+import { getShoes } from "../util/fetch";
+import { Link } from "react-router-dom";
 import Filter from "../components/Filter"
+
+// React query import
 import { useQuery } from "react-query";
 
-export default function MensPage({filter}) {
-  const { isLoading, data, error } = useQuery("electronics", getMens);
+export default function ShoesPage({filter}) {
+  const { isLoading, data, error } = useQuery("shoes", getShoes);
+// getting the  getProducts function from the util file and passing it to the useQuery hook
 
   if (isLoading) {
     return <div className="ourTeam">Loading...</div>;
@@ -17,7 +22,7 @@ export default function MensPage({filter}) {
 
   return (
     <main className="allProducts" style={{ padding: "30px" }}>
-      <h2>Men's Clothing</h2>
+      <h2>Women's Clothing</h2>
 
       <Filter data={data} filter={filter}/>
     </main>

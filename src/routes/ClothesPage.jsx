@@ -1,12 +1,12 @@
 import React from "react";
 import "../style.css";
-import { getJewelery } from "../util/fetch";
+import { getClothes } from "../util/fetch";
 import Filter from "../components/Filter"
 import { useQuery } from "react-query";
 
 
-export default function JeweleryPage({filter}) {
-  const { isLoading, data, error } = useQuery("jewelery", getJewelery);
+export default function ClothesPage({filter}) {
+  const { isLoading, data, error } = useQuery("Clothes", getClothes);
 
 
   if (isLoading) {
@@ -19,7 +19,7 @@ export default function JeweleryPage({filter}) {
 
   return (
     <main className="allProducts" style={{ padding: "30px" }}>
-      <h2>JEWELERY</h2>
+      <h2>Clothes</h2>
 
       <Filter data={data} filter={filter}/>
     </main>
